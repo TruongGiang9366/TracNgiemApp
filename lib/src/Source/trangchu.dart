@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:onluyenapp/src/Source/bailam.dart';
+import 'package:onluyenapp/src/Source/dethi.dart';
 import 'package:onluyenapp/src/Source/luyende.dart';
 
 class TrangChu extends StatefulWidget {
@@ -84,12 +85,12 @@ class _TrangChuState extends State<TrangChu> {
                   children: [
                     // ignore: prefer_const_constructors
                     Text(
-                      'Giới thiệu',
+                      'Giới Thiệu',
                       // ignore: prefer_const_constructors
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 24,
-                        fontWeight: FontWeight.normal,
+                        fontWeight: FontWeight.bold,
                       ),
                     )
                   ],
@@ -110,7 +111,144 @@ class _TrangChuState extends State<TrangChu> {
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 12,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: [
+                    // ignore: prefer_const_constructors
+                    Text(
+                      'Đề Xuất',
+                      // ignore: prefer_const_constructors
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Container(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Center(
+                          child: Wrap(
+                            spacing: 20.0,
+                            runSpacing: 20.0,
+                            children: [
+                              SizedBox(
+                                width: 120.0,
+                                height: 100.0,
+                                child: ElevatedButton(
+                                  onPressed: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LuyenDe())),
+                                  // ignore: sort_child_properties_last
+                                  child: Container(
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: [
+                                            Image.asset(
+                                              "assets/hoctap.png",
+                                              width: 50,
+                                              height: 50,
+                                            ),
+                                            SizedBox(height: 10.0),
+                                            Text(
+                                              "Luyện đề",
+                                              style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    255, 0, 0, 0),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15.0,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        Color.fromARGB(255, 1, 223, 253)),
+                                    shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 120.0,
+                                height: 100.0,
+                                child: Container(
+                                  child: ElevatedButton(
+                                    onPressed: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                Dethi_Page())),
+                                    // ignore: sort_child_properties_last
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: [
+                                            Image.asset(
+                                              "assets/study.png",
+                                              width: 50,
+                                              height: 50,
+                                            ),
+                                            SizedBox(height: 10.0),
+                                            Text(
+                                              "Đề thi test",
+                                              style: TextStyle(
+                                                color: Color(0xff0A0909),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15.0,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Color.fromARGB(255, 1, 223, 253)),
+                                      shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
