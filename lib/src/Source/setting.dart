@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:onluyenapp/src/Source/Dialogs4.dart';
+import 'package:onluyenapp/src/Source/LoginPage.dart';
 import 'package:onluyenapp/src/Source/editpassword.dart';
 import 'package:onluyenapp/src/Source/editphone.dart';
 import 'package:onluyenapp/src/Source/editprofile.dart';
+import 'Dialog.dart';
 
 class Setting_Page extends StatefulWidget {
   const Setting_Page({super.key});
@@ -48,16 +51,6 @@ class _Setting_PageState extends State<Setting_Page> {
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image: AssetImage('assets/user.png'),
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              Container(
-                child: Text(
-                  'Admin',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -138,121 +131,163 @@ class _Setting_PageState extends State<Setting_Page> {
                   ],
                 ),
               ),
-              SizedBox(height: 50),
+              SizedBox(height: 20),
               Container(
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 300,
-                          height: 60,
-                          child: ElevatedButton.icon(
-                            onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => editprofile_page(),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 300,
+                            height: 60,
+                            child: ElevatedButton.icon(
+                              onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => editprofile_page(),
+                                ),
                               ),
-                            ),
-                            icon: Icon(
-                              FontAwesomeIcons.user,
-                              color: Colors.black,
-                            ),
-                            label: Text(
-                              'Chỉnh sửa hồ sơ',
-                              style:
-                                  TextStyle(fontSize: 14, color: Colors.black),
-                            ),
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.white),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  side: BorderSide(color: Colors.white),
+                              icon: Icon(
+                                FontAwesomeIcons.user,
+                                color: Colors.black,
+                              ),
+                              label: Text(
+                                'Chỉnh sửa hồ sơ',
+                                style: TextStyle(
+                                    fontSize: 14, color: Colors.black),
+                              ),
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.white),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    side: BorderSide(color: Colors.white),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 300,
-                          height: 60,
-                          child: ElevatedButton.icon(
-                            onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => editpassword(),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 300,
+                            height: 60,
+                            child: ElevatedButton.icon(
+                              onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => editpassword(),
+                                ),
                               ),
-                            ),
-                            icon: Icon(
-                              FontAwesomeIcons.key,
-                              color: Colors.black,
-                            ),
-                            label: Text(
-                              'Đổi mật khẩu',
-                              style:
-                                  TextStyle(fontSize: 14, color: Colors.black),
-                            ),
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.white),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  side: BorderSide(color: Colors.white),
+                              icon: Icon(
+                                FontAwesomeIcons.key,
+                                color: Colors.black,
+                              ),
+                              label: Text(
+                                'Đổi mật khẩu',
+                                style: TextStyle(
+                                    fontSize: 14, color: Colors.black),
+                              ),
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.white),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    side: BorderSide(color: Colors.white),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 300,
-                          height: 60,
-                          child: ElevatedButton.icon(
-                            onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => editphone(),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 300,
+                            height: 60,
+                            child: ElevatedButton.icon(
+                              onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => editphone(),
+                                ),
                               ),
-                            ),
-                            icon: Icon(
-                              FontAwesomeIcons.phone,
-                              color: Colors.black,
-                            ),
-                            label: Text(
-                              'Cập nhật số điện thoại',
-                              style:
-                                  TextStyle(fontSize: 14, color: Colors.black),
-                            ),
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.white),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  side: BorderSide(color: Colors.white),
+                              icon: Icon(
+                                FontAwesomeIcons.phone,
+                                color: Colors.black,
+                              ),
+                              label: Text(
+                                'Cập nhật số điện thoại',
+                                style: TextStyle(
+                                    fontSize: 14, color: Colors.black),
+                              ),
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.white),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    side: BorderSide(color: Colors.white),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 300,
+                            height: 60,
+                            child: ElevatedButton.icon(
+                              onPressed: () => Dialogs4().imformationsss(
+                                context,
+                                'Thông Báo',
+                                'Bạn có chắc muốn đăng xuất ra khỏi ứng dụng không?',
+                              ),
+                              icon: Icon(
+                                FontAwesomeIcons.rightFromBracket,
+                                color: Colors.black,
+                              ),
+                              label: Text(
+                                'Đăng Xuất',
+                                style: TextStyle(
+                                    fontSize: 14, color: Colors.black),
+                              ),
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.white),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    side: BorderSide(color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],
