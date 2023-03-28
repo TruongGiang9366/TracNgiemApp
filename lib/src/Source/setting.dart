@@ -20,127 +20,127 @@ class _Setting_PageState extends State<Setting_Page> {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 25),
-          child: Column(
-            children: [
-              Row(
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  // ignore: prefer_const_constructors
-                  Text(
-                    'Ôn Luyện THPT',
-                    // ignore: prefer_const_constructors
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 25),
-              Container(
-                padding: EdgeInsets.all(10.0),
-                width: MediaQuery.of(context).size.width / 2,
-                height: MediaQuery.of(context).size.width / 2,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white, width: 5),
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('assets/user.png'),
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25),
+            child: Column(
+              children: [
+                Row(
+                  // ignore: prefer_const_literals_to_create_immutables
                   children: [
+                    // ignore: prefer_const_constructors
                     Text(
-                      'Thông Tin Cá Nhân',
+                      'Ôn Luyện THPT',
+                      // ignore: prefer_const_constructors
                       style: TextStyle(
+                        color: Colors.black,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
                 ),
-              ),
-              SizedBox(height: 20),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        width: 200,
-                        padding: EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: Color(0xFF005500)),
-                        child: Text(
-                          'Nguyễn Trường Giang',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
+                SizedBox(height: 25),
+                Container(
+                  padding: EdgeInsets.all(10.0),
+                  width: MediaQuery.of(context).size.width / 2,
+                  height: MediaQuery.of(context).size.width / 2,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white, width: 5),
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage('assets/user.png'),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        width: 150,
-                        padding: EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: Color(0xFF03300FF)),
-                        child: Text(
-                          '0857314540',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        width: 150,
-                        padding: EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: Color(0xFF6666CC)),
-                        child: Text(
-                          '29/03/2001',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-              SizedBox(height: 20),
-              Container(
-                child: SingleChildScrollView(
+                SizedBox(height: 10),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Thông Tin Cá Nhân',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: MediaQuery.of(context).size.height * 0.3,
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              color: Color(0xFF005500)),
+                          child: Text(
+                            'Nguyễn Trường Giang',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: MediaQuery.of(context).size.height * 0.2,
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              color: Color(0xFF03300FF)),
+                          child: Text(
+                            '0857314540',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: MediaQuery.of(context).size.height * 0.2,
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              color: Color(0xFF6666CC)),
+                          child: Text(
+                            '29/03/2001',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20),
+                Container(
                   child: Column(
                     children: [
                       Row(
                         children: [
                           SizedBox(
-                            width: 300,
-                            height: 60,
+                            width: MediaQuery.of(context).size.height * 0.4,
+                            height: MediaQuery.of(context).size.width * 0.2,
                             child: ElevatedButton.icon(
                               onPressed: () => Navigator.push(
                                 context,
@@ -177,8 +177,8 @@ class _Setting_PageState extends State<Setting_Page> {
                       Row(
                         children: [
                           SizedBox(
-                            width: 300,
-                            height: 60,
+                            width: MediaQuery.of(context).size.height * 0.4,
+                            height: MediaQuery.of(context).size.width * 0.2,
                             child: ElevatedButton.icon(
                               onPressed: () => Navigator.push(
                                 context,
@@ -215,8 +215,8 @@ class _Setting_PageState extends State<Setting_Page> {
                       Row(
                         children: [
                           SizedBox(
-                            width: 300,
-                            height: 60,
+                            width: MediaQuery.of(context).size.height * 0.4,
+                            height: MediaQuery.of(context).size.width * 0.2,
                             child: ElevatedButton.icon(
                               onPressed: () => Navigator.push(
                                 context,
@@ -253,8 +253,8 @@ class _Setting_PageState extends State<Setting_Page> {
                       Row(
                         children: [
                           SizedBox(
-                            width: 300,
-                            height: 60,
+                            width: MediaQuery.of(context).size.height * 0.4,
+                            height: MediaQuery.of(context).size.width * 0.2,
                             child: ElevatedButton.icon(
                               onPressed: () => Dialogs4().imformationsss(
                                 context,
@@ -288,9 +288,9 @@ class _Setting_PageState extends State<Setting_Page> {
                       ),
                     ],
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
