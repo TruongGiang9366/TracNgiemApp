@@ -1,16 +1,44 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:onluyenapp/src/Model/dethibailam_model.dart';
+import 'package:onluyenapp/src/Model/bailam_model.dart';
+import 'package:onluyenapp/src/Source/LoginPage.dart';
 import 'package:onluyenapp/src/Source/screen.dart';
 
-class Dethi_BaiLam_Page extends StatefulWidget {
-  const Dethi_BaiLam_Page({super.key});
+class BaiLam_Page extends StatefulWidget {
+  const BaiLam_Page({super.key});
 
   @override
-  State<Dethi_BaiLam_Page> createState() => _Dethi_BaiLam_PageState();
+  State<BaiLam_Page> createState() => _BaiLam_PageState();
 }
 
-class _Dethi_BaiLam_PageState extends State<Dethi_BaiLam_Page> {
+class _BaiLam_PageState extends State<BaiLam_Page> {
+  final user = FirebaseAuth.instance.currentUser!;
   List<Question> questionList = getQuestion();
+
+  // document list
+  List<Map> docIDs = [];
+// get docIDs
+  Future getDocId() async {
+    FirebaseFirestore.instance.collection('thithu').get().then((value) {
+      value.docs.forEach((element) {
+        docIDs.add(element.data());
+        print(element.data());
+      });
+    });
+  }
+
+  @override
+  // ignore: must_call_super
+  initState() {
+    // ignore: avoid_print
+
+    getDocId();
+    print(docIDs.length);
+  }
+
   int currentQuestionIndex = 0;
   int score = 0;
   Answer? selectedAnswer;
@@ -83,12 +111,13 @@ class _Dethi_BaiLam_PageState extends State<Dethi_BaiLam_Page> {
   }
 
   _questionWidget() {
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'Câu hỏi ${currentQuestionIndex + 1}/${questionList.length.toString()}',
+          'Câu hỏi ${currentQuestionIndex + 1}/${docIDs.length.toString()}',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -106,7 +135,7 @@ class _Dethi_BaiLam_PageState extends State<Dethi_BaiLam_Page> {
             borderRadius: BorderRadius.circular(16),
           ),
           child: Text(
-            questionList[currentQuestionIndex].questiontext,
+            "docIDs[currentQuestionIndex]['question'].toString()",
             style: TextStyle(
               color: Colors.black,
               fontSize: 18,

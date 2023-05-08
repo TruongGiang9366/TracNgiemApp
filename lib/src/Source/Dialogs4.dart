@@ -25,7 +25,7 @@ class Dialogs4 {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  MaterialPageRoute(builder: (context) => LoginPage(showRegisterPage: () {  },)),
                 );
               },
               child: Text("Ok"),

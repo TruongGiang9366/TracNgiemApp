@@ -1,19 +1,73 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:intl/intl.dart';
-import 'package:onluyenapp/src/Source/LoginPage.dart';
 
-class Register_Page extends StatefulWidget {
-  const Register_Page({super.key});
-
+class RegisterPage extends StatefulWidget {
+  final VoidCallback showLoginPage;
+  const RegisterPage({Key? key, required this.showLoginPage}) : super(key: key);
   @override
-  State<Register_Page> createState() => _Register_PageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _Register_PageState extends State<Register_Page> {
+class _RegisterPageState extends State<RegisterPage> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmpasswordController = TextEditingController();
+  final _firsNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
+  final _ageController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmpasswordController.dispose();
+    _firsNameController.dispose();
+    _lastNameController.dispose();
+    _ageController.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+// xác thực đăng nhập
+  Future signUp() async {
+    if (passwordConfirmed()) {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.toString().trim(),
+        password: _passwordController.text.toString().trim(),
+      );
+
+      addUserDetails(
+        _firsNameController.text.trim(),
+        _lastNameController.text.trim(),
+        _emailController.text.trim(),
+        int.parse(_ageController.text.trim()),
+      );
+    }
+    ;
+  }
+
+  Future addUserDetails(
+      String firsName, String lastname, String email, int age) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'first name': firsName,
+      'last name': lastname,
+      'age': age,
+      'email': email,
+    });
+  }
+
+  bool passwordConfirmed() {
+    if (_passwordController.text.toString().trim() ==
+        _confirmpasswordController.text.toString().trim()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   bool _obscureText = true;
-  DateTime date = new DateTime(2023, 18, 02);
-  TextEditingController _date = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +77,9 @@ class _Register_PageState extends State<Register_Page> {
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              // ignore: prefer_const_literals_to_create_immutables
               children: [
+                // ignore: prefer_const_constructors
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 50),
                   child: const Text(
@@ -39,10 +95,13 @@ class _Register_PageState extends State<Register_Page> {
                 SizedBox(
                   height: 10,
                 ),
+
+                //firlName
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 25),
                   // ignore: prefer_const_constructors
                   child: TextField(
+                    controller: _firsNameController,
                     // ignore: prefer_const_constructors
                     style: TextStyle(
                       fontSize: 18,
@@ -50,26 +109,29 @@ class _Register_PageState extends State<Register_Page> {
                     ),
                     // ignore: prefer_const_constructors
                     decoration: InputDecoration(
-                      hintText: 'Họ Và Tên',
-                      labelText: 'Họ Và Tên',
+                      //hintText: 'firs Name',
+                      labelText: 'firs Name',
                       fillColor: Colors.white,
                       filled: true,
-                      prefixIcon: Icon(FontAwesomeIcons.user),
+                      prefixIcon: Icon(Icons.email),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
-                    keyboardType: TextInputType.name,
+                    keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.done,
                   ),
                 ),
                 SizedBox(
                   height: 10,
                 ),
+
+                //lastname
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 25),
                   // ignore: prefer_const_constructors
                   child: TextField(
+                    controller: _lastNameController,
                     // ignore: prefer_const_constructors
                     style: TextStyle(
                       fontSize: 18,
@@ -77,36 +139,29 @@ class _Register_PageState extends State<Register_Page> {
                     ),
                     // ignore: prefer_const_constructors
                     decoration: InputDecoration(
-                      hintText: 'Number Phone',
-                      labelText: 'Number Phone',
+                      // hintText: 'last Name',
+                      labelText: 'last name',
                       fillColor: Colors.white,
                       filled: true,
-                      prefixIcon: Icon(Icons.phone),
+                      prefixIcon: Icon(Icons.email),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      prefix: const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8),
-                        child: Text(
-                          '+91',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
                     ),
-                    keyboardType: TextInputType.phone,
+                    keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.done,
                   ),
                 ),
                 SizedBox(
                   height: 10,
                 ),
+
+                //age
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 25),
                   // ignore: prefer_const_constructors
                   child: TextField(
+                    controller: _ageController,
                     // ignore: prefer_const_constructors
                     style: TextStyle(
                       fontSize: 18,
@@ -114,38 +169,29 @@ class _Register_PageState extends State<Register_Page> {
                     ),
                     // ignore: prefer_const_constructors
                     decoration: InputDecoration(
-                      hintText: 'Sinh Nhật',
-                      labelText: 'Sinh Nhật',
+                      //hintText: 'age',
+                      labelText: 'age',
                       fillColor: Colors.white,
                       filled: true,
-                      prefixIcon: Icon(Icons.calendar_today_rounded),
+                      prefixIcon: Icon(Icons.email),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
-                    onTap: () async {
-                      DateTime? pickeddate = await showDatePicker(
-                        context: context,
-                        initialDate: date,
-                        firstDate: DateTime(2000),
-                        lastDate: DateTime(2101),
-                      );
-                      if (pickeddate != null) {
-                        setState(() {
-                          _date.text =
-                              DateFormat('yyyy-MM-dd').format(pickeddate);
-                        });
-                      }
-                    },
+                    keyboardType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.done,
                   ),
                 ),
                 SizedBox(
                   height: 10,
                 ),
+
+                // email
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 25),
                   // ignore: prefer_const_constructors
                   child: TextField(
+                    controller: _emailController,
                     // ignore: prefer_const_constructors
                     style: TextStyle(
                       fontSize: 18,
@@ -153,7 +199,7 @@ class _Register_PageState extends State<Register_Page> {
                     ),
                     // ignore: prefer_const_constructors
                     decoration: InputDecoration(
-                      hintText: 'Email',
+                      //hintText: 'Email',
                       labelText: 'Email',
                       fillColor: Colors.white,
                       filled: true,
@@ -169,10 +215,12 @@ class _Register_PageState extends State<Register_Page> {
                 SizedBox(
                   height: 10,
                 ),
+                // ignore: prefer_const_constructors
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 25),
                   // ignore: prefer_const_constructors
                   child: TextField(
+                    controller: _passwordController,
                     // ignore: prefer_const_constructors
                     style: TextStyle(
                       fontSize: 18,
@@ -181,7 +229,7 @@ class _Register_PageState extends State<Register_Page> {
 
                     // ignore: prefer_const_constructors
                     decoration: InputDecoration(
-                      hintText: 'Mật Khẩu',
+                      // hintText: 'Mật Khẩu',
                       labelText: 'Mật Khẩu',
                       fillColor: Colors.white,
                       filled: true,
@@ -201,18 +249,58 @@ class _Register_PageState extends State<Register_Page> {
                       ),
                     ),
                     obscureText: _obscureText,
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
                   ),
                 ),
-                SizedBox(
-                  height: 10,
+                SizedBox(height: 10),
+
+                //confirm pass
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25),
+                  // ignore: prefer_const_constructors
+                  child: TextField(
+                    controller: _confirmpasswordController,
+                    // ignore: prefer_const_constructors
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
+
+                    // ignore: prefer_const_constructors
+                    decoration: InputDecoration(
+                      // hintText: 'nhập lại Mật Khẩu',
+                      labelText: 'nhập lại Mật Khẩu',
+                      fillColor: Colors.white,
+                      filled: true,
+                      prefixIcon: Icon(Icons.password),
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _obscureText = !_obscureText;
+                          });
+                        },
+                        child: Icon(_obscureText
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+                    obscureText: _obscureText,
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.done,
+                  ),
                 ),
                 SizedBox(height: 40),
+
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 50),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      signUp();
+                    },
                     child: Container(
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
@@ -223,7 +311,7 @@ class _Register_PageState extends State<Register_Page> {
                       child: Center(
                         // ignore: prefer_const_constructors
                         child: Text(
-                          'Đăng Ký',
+                          'Đăng ký',
                           // ignore: prefer_const_constructors
                           style: TextStyle(
                             color: Colors.white,
@@ -243,19 +331,23 @@ class _Register_PageState extends State<Register_Page> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("Bạn đã có tài khoản?"),
-                        TextButton(
+                        Text("Tôi đã có tài khoản"),
+                        GestureDetector(
                           // ignore: prefer_const_constructors
+                          onTap: widget.showLoginPage,
                           child: Text(
                             'Đăng nhập ngay',
-                            style: TextStyle(fontSize: 16),
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold),
                           ),
-                          onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LoginPage(),
-                            ),
-                          ),
+                          // onPressed: () => Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => homepage(),
+                          //   ),
+                          // ),
                         )
                       ],
                     ),

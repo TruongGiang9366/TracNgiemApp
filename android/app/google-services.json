@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "95456594468",
+    "firebase_url": "https://study-f543d-default-rtdb.firebaseio.com",
+    "project_id": "study-f543d",
+    "storage_bucket": "study-f543d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95456594468:android:33dd403f3f3fe1e069e6b1",
+        "android_client_info": {
+          "package_name": "com.example.onluyenapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95456594468-rdd50sisg4vnb8g6g5tgajf7g9uv3aj3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.onluyenapp",
+            "certificate_hash": "4165945c8d5152e056bc049fce686b80ed9415cf"
+          }
+        },
+        {
+          "client_id": "95456594468-557cgfsfv6li60q719d4g29mvsm50i52.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8QhTomC0cq3tR87B7kKLU4Uq0dzBgsmE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "95456594468-557cgfsfv6li60q719d4g29mvsm50i52.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

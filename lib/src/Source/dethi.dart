@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:onluyenapp/src/Source/HienThiKQ_DeThi.dart';
-import 'package:onluyenapp/src/Source/dethi_bailam.dart';
+import 'package:onluyenapp/src/Source/bailam.dart';
 
 class Dethi_Page extends StatelessWidget {
   Dethi_Page({super.key});
@@ -50,7 +50,7 @@ class Dethi_Page extends StatelessWidget {
                       onPressed: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Dethi_BaiLam_Page(),
+                              builder: (context) => BaiLam_Page(),
                             ),
                           ),
                       child: Text('Làm bài')),
